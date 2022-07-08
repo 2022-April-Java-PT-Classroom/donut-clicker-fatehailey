@@ -26,19 +26,29 @@
       </div>
 
       <div class="homecontainer">
+          <section class="donutAmount">
             <h1 class="header">Welcome to Donut Clicker</h1>
             <p>Where the clicking is what makes the donuts!</p> 
-            <button class="donutClicker">Donut Clicker</button>
-            <h2 id="donutCount"> 0 </h2>
-          <section>
-            <button class="donutAutoClicker">Purchase AutoClicker</button>
-            <h2 id="autoClickers"> 0 </h2>
+            <button onclick="addDonutCount" id="donutClicker">Donut Clicker</button>
+            <h2 id="donutCount"></h2>
+            <h2 id="perClick"></h2>
           </section>
-          <section>
-            <button class="donutMultiplersClicker">Purchase Multipler</button>
-            <h2 id="donutMultiplers"> 0 </h2>
+          <section class="autoClicker">
+            <h3>Amount of Auto Clickers purchased: </h3> <h3 id="totalAutoClickers"></h3>
+            <button onclick = "" id = "addClicker" disabled = "disabled">Purchase auto Clickers for: </button>
+          </section>
+          <section class="multiplierClicker">
+            <h3>Amount of Donut Multipliers Purchased: <h3 id = "totalMultipliers"></h3></h3> 
+            <button onclick = ""  id = "addMultiplier" disabled = "disabled">Purchase Multiplier for: </button>
+          </section>
+          <section class = "reset">
+            <button onclick = "" id="resetButton">Reset Game</button>
           </section>
         </div>
+
+
+
     <script src="./index.js"></script>
+    <script src = "donutMaker.js"></script>
   </body>
 </html>
