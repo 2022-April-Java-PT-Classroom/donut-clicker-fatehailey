@@ -1,4 +1,4 @@
-import DonutMaker from "DonutMaker.js";
+import DonutMaker from "./DonutMaker.js";
 
 function onClickMenu(){
   document.getElementById("menu").classList.toggle("icon");
@@ -8,7 +8,7 @@ function onClickMenu(){
 
 
 
-  const donutAmount = document.querySelector('#donutCount');
+  const donutAmount = document.querySelector('.donutCount');
   const totalDonuts = document.querySelector('#donutClicker');
   const totalAuto = document.querySelector('#totalAutoClickers') ;
   const autoButton = document.querySelector('#addClicker');
@@ -17,10 +17,10 @@ function onClickMenu(){
   const valuePerClick = document.querySelector('#perClick');
   const resetButton = document.querySelector('#resetButton');
 
-  DonutMaker = new DonutMaker(0, 0, 100, 0, 10);
+let myDonuts = new DonutMaker(0, 0, 100, 0, 10);
 
 donutAmount.addEventListener("click", () => {
-  DonutMaker.addDonut();
-  DonutMaker.activateMultipliers();
-  numDonutsDiv.innerHTML = DonutMaker.numDonuts;
+  myDonuts.addDonut();
+  myDonuts.activateMultipliers();
+  donutAmount.innerHTML = myDonuts.numDonuts;
 });
