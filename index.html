@@ -4,10 +4,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
     <title>Donut Clicker</title>
   </head>
   <body>
-    <div class="container"></div>
+
+      <div id="navigation">
+        <div id="menu" onclick="onClickMenu()">
+          <div id="bar1" class="bar"></div>
+          <div id="bar2" class="bar"></div>
+          <div id="bar3" class="bar"></div>
+        </div>
+      
+      <ul class="nav" id="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="baking.html">Fred the Baker Baking Company</a></li>
+        <li><a href="https://orteil.dashnet.org/cookieclicker/">Inspiration Cookie Clicker</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="developer.html">Developer</a></li>
+      </ul>
+      </div>
+
+      <div class="homecontainer">
+          <section class="donutAmount">
+            <h1 class="header">Welcome to Donut Clicker</h1>
+            <p>Where the clicking is what makes the donuts!</p> 
+            <button onclick="addDonutCount" id="donutClicker">Donut Clicker</button>
+            <h2 id="donutCount"></h2>
+            <h2 id="perClick"></h2>
+          </section>
+          <section class="autoClicker">
+            <h3>Amount of Auto Clickers purchased: </h3> <h3 id="totalAutoClickers"></h3>
+            <button onclick = "" id = "addClicker" disabled = "disabled">Purchase auto Clickers for: </button>
+          </section>
+          <section class="multiplierClicker">
+            <h3>Amount of Donut Multipliers Purchased: <h3 id = "totalMultipliers"></h3></h3> 
+            <button onclick = ""  id = "addMultiplier" disabled = "disabled">Purchase Multiplier for: </button>
+          </section>
+          <section class = "reset">
+            <button onclick = "" id="resetButton">Reset Game</button>
+          </section>
+        </div>
+
+
+
     <script src="./index.js"></script>
+    <script src = "donutMaker.js"></script>
   </body>
 </html>
