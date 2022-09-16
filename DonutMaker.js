@@ -1,46 +1,85 @@
 class DonutMaker {
-
-    constructor(numDonuts, numAutoclickers, autoClickerCost, multiplierNum, multiplierCost){
-        this.numDonuts = numDonuts;
-        this.numAutoclickers = numAutoclickers;
-        this.autoClickerCost = autoClickerCost;
-        this.multiplierNum = multiplierNum;
-        this.multiplierCost = multiplierCost;
-        
+    constructor(
+      numDonuts,
+      numAutoClickers,
+      costAutoClicker,
+      numDonutMultiplier,
+      costDonutMultiplier,
+      donutsPerClick
+    ) {
+      this.numDonuts = numDonuts;
+      this.numAutoClickers = numAutoClickers;
+      this.costAutoClicker = costAutoClicker;
+      this.numDonutMultiplier = numDonutMultiplier;
+      this.costDonutMultiplier = costDonutMultiplier;
+      this.donutsPerClick = donutsPerClick;
     }
-
-    addDonut(){
-        this.numDonuts ++;
+  
+    getNumDonut() {
+      return Number(this.numDonuts.toFixed(2));
     }
-
-    addAutoclicker(){
-        if(this.numDonuts >= this.autoClickerCost){
-            this.numAutoclickers++;
-            this.numDonuts -= this.autoClickerCost;
-            this.autoClickerCost = this.autoClickerCost / 10 + this.autoClickerCost;
+  
+    addDonut() {
+      if (this.numDonutMultiplier >= 1) this.numDonuts += this.donutsPerClick;
+      else this.numDonuts += 1;
+    }
+  
+    getDonutsPerClick() {
+      return this.donutsPerClick;
+    }
+  
+    increaseDonutsPerClick() {
+      this.donutsPerClick = +Math.pow(1.2, this.numDonutMultiplier).toFixed(2);
+    }
+  
+    getNumAutoClicker() {
+      return this.numAutoClickers;
+    }
+  
+    getCostAutoClicker() {
+      return Number(this.costAutoClicker.toFixed(2));
+    }
+  
+    addDonutByAutoClicker() {
+      this.numDonuts += this.numAutoClickers;
+    }
+  
+    addAutoClicker() {
+      if (this.numDonuts >= this.costAutoClicker) {
+        if (this.numDonutMultiplier >= 1) {
+          this.numAutoClickers += +Math.pow(1.2, this.numDonutMultiplier).toFixed(
+            2
+          );
+        } else {
+          this.numAutoClickers++;
         }
-    }
-    
-    addMultiplier(){
-        if(this.numDonuts >= this.multiplierCost)
-        this.multiplierNum ++;
-        this.numDonuts -= this.multiplierCost;
-        this.multiplierCost = this.multiplierCost / 10 + this.multiplierCost;
-    }
-
-    activateMultiplier() {
-        if (this.numMultipliers > 0) {
-            this.numDonuts += Math.pow(1.2, this.numMultipliers);
-            Math.round(this.numDonuts);
-        }
-    }
-
-    activateAutoClicker() {
-        if (this.numAutoClickers > 0) {
-          this.numDonuts += this.numAutoClickers * 1;
-        }
-        activateMultipliers();
+        this.numDonuts -= Math.round(this.costAutoClicker);
+        this.costAutoClicker = Math.round(this.costAutoClicker);
+        this.costAutoClicker *= 1.1;
       }
-}
-
-export default DonutMaker;
+    }
+  
+    getNumDonutMultiplier() {
+      return this.numDonutMultiplier;
+    }
+  
+    getCostDonutMultiplier() {
+      return Number(this.costDonutMultiplier.toFixed(2));
+    }
+  
+    addDonutMultiplier() {
+      if (this.numDonuts >= this.costDonutMultiplier) {
+        this.numDonuts -= Math.round(this.costDonutMultiplier);
+        this.numDonutMultiplier += 1;
+        this.costDonutMultiplier += this.costDonutMultiplier * 1.1;
+        this.increaseDonutsPerClick();
+      }
+    }
+  
+    activateAutoClicker() {
+      if (this.numAutoClickers > 0) {
+        this.numDonuts += this.numAutoClickers * 1;
+      }
+    }
+  }
+  export default DonutMaker;
